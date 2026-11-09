@@ -1,0 +1,177 @@
+{
+  "captured_at_utc": "2026-11-09T17:24:07.6292845+00:00",
+  "stage": "Before any pull request is merged",
+  "repository": {
+    "allow_auto_merge": false,
+    "allow_merge_commit": false,
+    "allow_rebase_merge": true,
+    "allow_squash_merge": false,
+    "default_branch": "main",
+    "delete_branch_on_merge": false,
+    "full_name": "LamentXU123/issue-link-demo",
+    "has_issues": true,
+    "visibility": "public"
+  },
+  "issues": [
+    {
+      "closedAt": null,
+      "number": 1,
+      "state": "OPEN",
+      "title": "A: title only",
+      "url": "https://github.com/LamentXU123/issue-link-demo/issues/1"
+    },
+    {
+      "closedAt": null,
+      "number": 2,
+      "state": "OPEN",
+      "title": "B: commit only",
+      "url": "https://github.com/LamentXU123/issue-link-demo/issues/2"
+    },
+    {
+      "closedAt": null,
+      "number": 3,
+      "state": "OPEN",
+      "title": "C: body only",
+      "url": "https://github.com/LamentXU123/issue-link-demo/issues/3"
+    },
+    {
+      "closedAt": null,
+      "number": 4,
+      "state": "OPEN",
+      "title": "D: non-default branch",
+      "url": "https://github.com/LamentXU123/issue-link-demo/issues/4"
+    }
+  ],
+  "pull_requests": [
+    {
+      "baseRefName": "main",
+      "body": "",
+      "closingIssuesReferences": [],
+      "commits": [
+        {
+          "authoredDate": "2026-11-09T17:22:54Z",
+          "authors": [
+            {
+              "email": "108666168+LamentXU123@users.noreply.github.com",
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123",
+              "name": "Weilin Du"
+            }
+          ],
+          "committedDate": "2026-11-09T17:22:54Z",
+          "messageBody": "",
+          "messageHeadline": "Add sample A",
+          "oid": "69c504eb49d7183b8b179554d0e6069bb8153d97"
+        }
+      ],
+      "headRefName": "title-only",
+      "mergeStateStatus": "CLEAN",
+      "mergeable": "MERGEABLE",
+      "number": 5,
+      "state": "OPEN",
+      "title": "Fix GH-1: title-only test",
+      "url": "https://github.com/LamentXU123/issue-link-demo/pull/5"
+    },
+    {
+      "baseRefName": "main",
+      "body": "",
+      "closingIssuesReferences": [],
+      "commits": [
+        {
+          "authoredDate": "2026-11-09T17:22:54Z",
+          "authors": [
+            {
+              "email": "108666168+LamentXU123@users.noreply.github.com",
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123",
+              "name": "Weilin Du"
+            }
+          ],
+          "committedDate": "2026-11-09T17:22:54Z",
+          "messageBody": "",
+          "messageHeadline": "Fix GH-2: commit-only test",
+          "oid": "a9610204f5462ca6d59439a82c95739540956432"
+        }
+      ],
+      "headRefName": "commit-only",
+      "mergeStateStatus": "CLEAN",
+      "mergeable": "MERGEABLE",
+      "number": 6,
+      "state": "OPEN",
+      "title": "Commit-only test",
+      "url": "https://github.com/LamentXU123/issue-link-demo/pull/6"
+    },
+    {
+      "baseRefName": "main",
+      "body": "Fixes #3",
+      "closingIssuesReferences": [
+        {
+          "id": "I_kwDOVoamOc8AAAABdvorwA",
+          "number": 3,
+          "repository": {
+            "id": "R_kgDOVoamOQ",
+            "name": "issue-link-demo",
+            "owner": {
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123"
+            }
+          },
+          "url": "https://github.com/LamentXU123/issue-link-demo/issues/3"
+        }
+      ],
+      "commits": [
+        {
+          "authoredDate": "2026-11-09T17:22:55Z",
+          "authors": [
+            {
+              "email": "108666168+LamentXU123@users.noreply.github.com",
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123",
+              "name": "Weilin Du"
+            }
+          ],
+          "committedDate": "2026-11-09T17:22:55Z",
+          "messageBody": "",
+          "messageHeadline": "Add sample C",
+          "oid": "9dc3efd6acea842e556964d96828967bc3eb0701"
+        }
+      ],
+      "headRefName": "body-only",
+      "mergeStateStatus": "CLEAN",
+      "mergeable": "MERGEABLE",
+      "number": 7,
+      "state": "OPEN",
+      "title": "Body-only test",
+      "url": "https://github.com/LamentXU123/issue-link-demo/pull/7"
+    },
+    {
+      "baseRefName": "release-demo",
+      "body": "",
+      "closingIssuesReferences": [],
+      "commits": [
+        {
+          "authoredDate": "2026-11-09T17:22:55Z",
+          "authors": [
+            {
+              "email": "108666168+LamentXU123@users.noreply.github.com",
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123",
+              "name": "Weilin Du"
+            }
+          ],
+          "committedDate": "2026-11-09T17:22:55Z",
+          "messageBody": "",
+          "messageHeadline": "Fix GH-4: release test",
+          "oid": "35a4ce4f311708202f066a6cd582b8db89494003"
+        }
+      ],
+      "headRefName": "commit-via-release",
+      "mergeStateStatus": "CLEAN",
+      "mergeable": "MERGEABLE",
+      "number": 8,
+      "state": "OPEN",
+      "title": "Non-default branch test",
+      "url": "https://github.com/LamentXU123/issue-link-demo/pull/8"
+    }
+  ]
+}

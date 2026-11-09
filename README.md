@@ -39,12 +39,14 @@ Keep the test issues free of manual links and manual close/reopen actions. Avoid
 
 ## Observations
 
+The initial API checks are saved in [the before-merge snapshot](evidence/before-merge.json). All four issues and PRs were open. Only PR C reported a closing issue reference. The after-merge results have not been measured yet.
+
 | Case | Formal PR link before merge | Issue after first merge | Issue after reaching main | Evidence |
 | --- | --- | --- | --- | --- |
-| A | Pending | Pending | Pending | Pending |
-| B | Pending | Pending | Pending | Pending |
-| C | Pending | Pending | Pending | Pending |
-| D | Pending | Pending (`release-demo`) | Pending | Pending |
+| A | No | Pending | Pending | [PR A](https://github.com/LamentXU123/issue-link-demo/pull/5) |
+| B | No | Pending | Pending | [PR B](https://github.com/LamentXU123/issue-link-demo/pull/6) |
+| C | Yes, issue 3 | Pending | Pending | [PR C](https://github.com/LamentXU123/issue-link-demo/pull/7) |
+| D | No | Pending (`release-demo`) | Pending | [PR D](https://github.com/LamentXU123/issue-link-demo/pull/8) |
 
 ## Expected outcomes
 
