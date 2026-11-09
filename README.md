@@ -39,6 +39,8 @@ Enable GitHub Actions. The workflow requests `pull-requests: write`, `issues: wr
 
 It listens to PR creation, edits, reopening, and closing. It reads bot code only from the trusted default branch, never from the PR head, and does not post comments.
 
+Public repositories may require an explicit Actions event policy allowing `pull_request_target`. This demo has an active policy scoped to this workflow only, allowing `pull_request_target` and `workflow_dispatch`. The policy request is saved in [.github/title-issue-bot-policy.json](.github/title-issue-bot-policy.json). In another repository, an administrator can review existing policies under **Settings > Actions > Policies**, then configure this workflow's permitted events. See [GitHub's event-policy guidance](https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target#default-policy-for-pull_request_target).
+
 For existing PRs, select **Actions > Title issue bot > Run workflow**. Leave `pr_number` empty to reconcile open PRs, or provide a PR number to process it explicitly. Explicit manual reconciliation can also repair a missed merge event for an already merged PR.
 
 ## Local verification

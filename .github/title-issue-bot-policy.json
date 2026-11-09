@@ -1,0 +1,18 @@
+{
+  "name": "Allow title issue bot events",
+  "enforcement": "active",
+  "conditions": {
+    "workflow_path": {
+      "include": [".github/workflows/title-issue-bot.yml"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "restrict_action_events",
+      "parameters": {
+        "allowed_events": ["pull_request_target", "workflow_dispatch"]
+      }
+    }
+  ]
+}
