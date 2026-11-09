@@ -1,0 +1,37 @@
+{
+  "captured_at_utc": "2026-11-09T17:36:50.7320401+00:00",
+  "stage": "Bot added the issue reference, before merging into release-demo",
+  "link_workflow_run": "https://github.com/LamentXU123/issue-link-demo/actions/runs/42666226262",
+  "pull_request": {
+    "baseRefName": "release-demo",
+    "body": "This demo checks automatic issue closure after merging into a non-default branch. This description has no issue reference before the bot processes it.\n\n<!-- title-issue-bot:start -->\nFixes #9\n<!-- title-issue-bot:end -->",
+    "commits": [
+      {
+        "authoredDate": "2026-11-09T17:34:08Z",
+        "authors": [
+          {
+            "email": "108666168+LamentXU123@users.noreply.github.com",
+            "id": "U_kgDOBnodOA",
+            "login": "LamentXU123",
+            "name": "Weilin Du"
+          }
+        ],
+        "committedDate": "2026-11-09T17:34:08Z",
+        "messageBody": "",
+        "messageHeadline": "Add bot closure sample",
+        "oid": "98d3701adbc7a6e4d232bf8254c76e44fd0863b6"
+      }
+    ],
+    "headRefOid": "98d3701adbc7a6e4d232bf8254c76e44fd0863b6",
+    "number": 10,
+    "state": "OPEN",
+    "title": "Fix GH-9: demonstrate closure on release-demo",
+    "url": "https://github.com/LamentXU123/issue-link-demo/pull/10"
+  },
+  "issue": {
+    "closedAt": null,
+    "number": 9,
+    "state": "OPEN",
+    "url": "https://github.com/LamentXU123/issue-link-demo/issues/9"
+  }
+}

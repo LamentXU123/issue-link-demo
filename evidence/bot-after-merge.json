@@ -1,0 +1,112 @@
+{
+  "captured_at_utc": "2026-11-09T17:37:57.9110366+00:00",
+  "local_tests": {
+    "node_version": "v24.14.0",
+    "passed": 13,
+    "command": "node --test test/title-issue-bot.test.cjs",
+    "failed": 0
+  },
+  "default_branch_case": {
+    "link_workflow_run": "https://github.com/LamentXU123/issue-link-demo/actions/runs/42665850797",
+    "pull_request": {
+      "baseRefName": "main",
+      "body": "<!-- title-issue-bot:start -->\nFixes #1\n<!-- title-issue-bot:end -->",
+      "commits": [
+        {
+          "authoredDate": "2026-11-09T17:22:54Z",
+          "authors": [
+            {
+              "email": "108666168+LamentXU123@users.noreply.github.com",
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123",
+              "name": "Weilin Du"
+            }
+          ],
+          "committedDate": "2026-11-09T17:22:54Z",
+          "messageBody": "",
+          "messageHeadline": "Add sample A",
+          "oid": "69c504eb49d7183b8b179554d0e6069bb8153d97"
+        }
+      ],
+      "mergeCommit": {
+        "oid": "f30a5ef8d8a724317e306aab90890bbe91a13c65"
+      },
+      "mergedAt": "2026-11-09T17:34:41Z",
+      "number": 5,
+      "state": "MERGED",
+      "title": "Fix GH-1: title-only test",
+      "url": "https://github.com/LamentXU123/issue-link-demo/pull/5"
+    },
+    "issue": {
+      "closed_at": "2026-11-09T17:34:43Z",
+      "closed_by": "LamentXU123",
+      "number": 1,
+      "state": "closed",
+      "state_reason": "completed",
+      "url": "https://github.com/LamentXU123/issue-link-demo/issues/1"
+    }
+  },
+  "non_default_branch_case": {
+    "comparison_with_main": {
+      "ahead_by": 1,
+      "behind_by": 2,
+      "commits": [
+        "98d6fe2155e1cbdb9a44581b86cfe7142b3b8061"
+      ],
+      "status": "diverged"
+    },
+    "workflow_run": {
+      "conclusion": "success",
+      "databaseId": 42666355676,
+      "event": "pull_request_target",
+      "status": "completed",
+      "url": "https://github.com/LamentXU123/issue-link-demo/actions/runs/42666355676"
+    },
+    "close_events": [
+      {
+        "actor": "github-actions[bot]",
+        "commit_id": null,
+        "created_at": "2026-11-09T17:37:04Z",
+        "event": "closed"
+      }
+    ],
+    "pull_request": {
+      "baseRefName": "release-demo",
+      "body": "This demo checks automatic issue closure after merging into a non-default branch. This description has no issue reference before the bot processes it.\n\n<!-- title-issue-bot:start -->\nFixes #9\n<!-- title-issue-bot:end -->",
+      "commits": [
+        {
+          "authoredDate": "2026-11-09T17:34:08Z",
+          "authors": [
+            {
+              "email": "108666168+LamentXU123@users.noreply.github.com",
+              "id": "U_kgDOBnodOA",
+              "login": "LamentXU123",
+              "name": "Weilin Du"
+            }
+          ],
+          "committedDate": "2026-11-09T17:34:08Z",
+          "messageBody": "",
+          "messageHeadline": "Add bot closure sample",
+          "oid": "98d3701adbc7a6e4d232bf8254c76e44fd0863b6"
+        }
+      ],
+      "mergeCommit": {
+        "oid": "98d6fe2155e1cbdb9a44581b86cfe7142b3b8061"
+      },
+      "mergedAt": "2026-11-09T17:36:54Z",
+      "number": 10,
+      "state": "MERGED",
+      "title": "Fix GH-9: demonstrate closure on release-demo",
+      "url": "https://github.com/LamentXU123/issue-link-demo/pull/10"
+    },
+    "issue": {
+      "closed_at": "2026-11-09T17:37:04Z",
+      "closed_by": "github-actions[bot]",
+      "number": 9,
+      "state": "closed",
+      "state_reason": "completed",
+      "url": "https://github.com/LamentXU123/issue-link-demo/issues/9"
+    }
+  },
+  "issue_comments_posted": 0
+}

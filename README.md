@@ -19,12 +19,19 @@ On the default branch, GitHub may close the issue natively from the generated de
 
 ## Live demonstration
 
-The bot is installed in this repository. Demonstration links and observed results are recorded here after execution; the initial native-behavior snapshot is preserved in [evidence/before-merge.json](evidence/before-merge.json).
+The bot is installed and verified in this repository. The initial native-behavior snapshot is preserved in [evidence/before-merge.json](evidence/before-merge.json).
 
 | Demonstration | PR | Issue | Observed result |
 | --- | --- | --- | --- |
-| Title reference, default branch | [5](https://github.com/LamentXU123/issue-link-demo/pull/5) | [1](https://github.com/LamentXU123/issue-link-demo/issues/1) | Pending bot demonstration |
-| Title reference, non-default branch | To be created | To be created | Pending bot demonstration |
+| Title reference, default branch | [5](https://github.com/LamentXU123/issue-link-demo/pull/5) | [1](https://github.com/LamentXU123/issue-link-demo/issues/1) | Bot added the closing reference; merging into `main` closed the issue |
+| Title reference, non-default branch | [10](https://github.com/LamentXU123/issue-link-demo/pull/10) | [9](https://github.com/LamentXU123/issue-link-demo/issues/9) | Bot preserved the original description and added the reference; merging into `release-demo` closed the issue as `github-actions[bot]` |
+
+Both PRs have neutral commit messages: `Add sample A` and `Add bot closure sample`. The second PR's commit was not in `main` when the issue closed, so its closure demonstrates the bot's explicit API operation on a non-default branch.
+
+- [Successful automatic linking run for PR 10](https://github.com/LamentXU123/issue-link-demo/actions/runs/42666226262)
+- [Successful automatic closing run for PR 10](https://github.com/LamentXU123/issue-link-demo/actions/runs/42666355676)
+- [Snapshot after linking, before merge: issue 9 was still open](evidence/bot-before-merge.json)
+- [Verified results, closing actor, and branch comparison](evidence/bot-after-merge.json)
 
 See [workflow runs](https://github.com/LamentXU123/issue-link-demo/actions/workflows/title-issue-bot.yml) for the bot's execution logs and summaries.
 
