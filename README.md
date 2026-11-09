@@ -1,64 +1,56 @@
-# Issue linking demo
+# Issue title bot
 
-A public experiment that separates issue references in pull request titles, pull request descriptions, and commit messages.
+A GitHub Actions bot that links issues from PR titles and closes them when the PR is merged, including into non-default branches.
 
-## Repository setup
+## Behavior
 
-- Default branch: `main`.
-- Non-default target branch: `release-demo`.
-- Issues are enabled.
-- Only **Rebase and merge** is enabled. Merge commits and squash merges are disabled so that a PR title cannot become a commit message during merging.
-- Branches are retained after merging so the experiment remains easy to inspect.
-- No workflow or bot implements issue linking in this repository.
+For a title such as `Fix GH-123: correct the parser`, the bot:
 
-## Test cases
+1. Confirms that issue 123 exists in the same repository and is an issue rather than another PR.
+2. Adds a managed `Fixes #123` block to the PR description, preserving the author's other text.
+3. Updates or removes that block when the title changes.
+4. Closes the referenced issue as completed when the PR is merged into any target branch.
 
-The table describes hypotheses to test, not completed results. All four issues and PRs start open.
+Supported verbs are `fix`, `fixes`, `fixed`, `close`, `closes`, `closed`, `resolve`, `resolves`, and `resolved`, ignoring case. References may use `GH-123` or `#123`. Multiple references work, for example `Fix GH-123 and GH-456`.
 
-| Case | Issue | Pull request | Head -> base | PR title | PR description | Commit message |
-| --- | --- | --- | --- | --- | --- | --- |
-| A: title only | [1](https://github.com/LamentXU123/issue-link-demo/issues/1) | [5](https://github.com/LamentXU123/issue-link-demo/pull/5) | `title-only` -> `main` | `Fix GH-1: title-only test` | Empty | `Add sample A` |
-| B: commit only | [2](https://github.com/LamentXU123/issue-link-demo/issues/2) | [6](https://github.com/LamentXU123/issue-link-demo/pull/6) | `commit-only` -> `main` | `Commit-only test` | Empty | `Fix GH-2: commit-only test` |
-| C: description only | [3](https://github.com/LamentXU123/issue-link-demo/issues/3) | [7](https://github.com/LamentXU123/issue-link-demo/pull/7) | `body-only` -> `main` | `Body-only test` | `Fixes #3` | `Add sample C` |
-| D: non-default branch | [4](https://github.com/LamentXU123/issue-link-demo/issues/4) | [8](https://github.com/LamentXU123/issue-link-demo/pull/8) | `commit-via-release` -> `release-demo` | `Non-default branch test` | Empty | `Fix GH-4: release test` |
+A normal closure without merging leaves the issue open. Plain mentions such as `Discuss GH-123`, nonexistent issues, references to other repositories, and references to PR numbers are ignored. Already closed issues remain closed. Editing a merged PR does not close additional issues.
 
-Issue and PR numbers share a counter; the issues are created before the PRs.
+On the default branch, GitHub may close the issue natively from the generated description before the bot's merge job runs. On a non-default branch, the bot explicitly closes the issue using the Issues API. GitHub's formal Development link from closing keywords is limited to PRs targeting the default branch; the generated reference still provides an issue-timeline backlink for other target branches.
 
-## How to run
+## Live demonstration
 
-1. Before merging anything, inspect each issue's **Development** section and timeline. Record formal PR links separately from commit references or other timeline mentions.
-2. Rebase and merge PR A. Its commit message is deliberately neutral. Check whether issue A remains open.
-3. Rebase and merge PR B. Check whether issue B closes, and which commit appears in its closing event.
-4. Inspect issue C's PR link, then rebase and merge PR C. Check whether issue C closes.
-5. Rebase and merge PR D into `release-demo`. Check that issue D is still open.
-6. Create another PR with **base `main`**, **head `release-demo`**, title `Promote release demo`, and an empty description. Before merging, verify its commit still has the message `Fix GH-4: release test`.
-7. Rebase and merge that promotion PR. Check whether issue D now closes.
-8. Replace the pending entries below with the observed outcomes and links to the closing events or commits.
+The bot is installed in this repository. Demonstration links and observed results are recorded here after execution; the initial native-behavior snapshot is preserved in [evidence/before-merge.json](evidence/before-merge.json).
 
-Keep the test issues free of manual links and manual close/reopen actions. Avoid adding issue references to other PR descriptions or commit messages. Do not rename the default branch during the experiment.
+| Demonstration | PR | Issue | Observed result |
+| --- | --- | --- | --- |
+| Title reference, default branch | [5](https://github.com/LamentXU123/issue-link-demo/pull/5) | [1](https://github.com/LamentXU123/issue-link-demo/issues/1) | Pending bot demonstration |
+| Title reference, non-default branch | To be created | To be created | Pending bot demonstration |
 
-## Observations
+See [workflow runs](https://github.com/LamentXU123/issue-link-demo/actions/workflows/title-issue-bot.yml) for the bot's execution logs and summaries.
 
-The initial API checks are saved in [the before-merge snapshot](evidence/before-merge.json). All four issues and PRs were open. Only PR C reported a closing issue reference. The after-merge results have not been measured yet.
+## Install in another repository
 
-| Case | Formal PR link before merge | Issue after first merge | Issue after reaching main | Evidence |
-| --- | --- | --- | --- | --- |
-| A | No | Pending | Pending | [PR A](https://github.com/LamentXU123/issue-link-demo/pull/5) |
-| B | No | Pending | Pending | [PR B](https://github.com/LamentXU123/issue-link-demo/pull/6) |
-| C | Yes, issue 3 | Pending | Pending | [PR C](https://github.com/LamentXU123/issue-link-demo/pull/7) |
-| D | No | Pending (`release-demo`) | Pending | [PR D](https://github.com/LamentXU123/issue-link-demo/pull/8) |
+Copy these two files into the repository's default branch:
 
-## Expected outcomes
+- [.github/workflows/title-issue-bot.yml](.github/workflows/title-issue-bot.yml)
+- [.github/scripts/title-issue-bot.cjs](.github/scripts/title-issue-bot.cjs)
 
-- A: no formal PR link; the issue remains open after merging the neutral commit.
-- B: no formal PR link; the issue closes once the commit reaches `main`.
-- C: the description establishes a formal PR link; the issue closes when the PR merges into `main`.
-- D: merging into `release-demo` leaves the issue open; carrying the closing commit into `main` closes it.
+Enable GitHub Actions. The workflow requests `pull-requests: write`, `issues: write`, and `contents: read`, using the built-in `GITHUB_TOKEN`. No personal access token or external service is required.
 
-These are the expectations being investigated. Record any different behavior rather than changing the experiment to match the expectations.
+It listens to PR creation, edits, reopening, and closing. It reads bot code only from the trusted default branch, never from the PR head, and does not post comments.
 
-## References
+For existing PRs, select **Actions > Title issue bot > Run workflow**. Leave `pr_number` empty to reconcile open PRs, or provide a PR number to process it explicitly. Explicit manual reconciliation can also repair a missed merge event for an already merged PR.
 
-- [Linking a pull request to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)
-- [Pull request merges](https://docs.github.com/en/pull-requests/reference/pull-request-merges)
-- [Autolinked references and URLs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls)
+## Local verification
+
+Use Node.js 22 or later:
+
+```sh
+node --test test/title-issue-bot.test.cjs
+```
+
+The tests cover title parsing, preservation of manual descriptions, title edits, retry behavior, merge versus unmerged closure, non-default branches, missing issues, PR-number references, stale events, and API failures.
+
+## Earlier native-behavior baseline
+
+The original four-case experiment is archived in [docs/native-linking-baseline.md](docs/native-linking-baseline.md). It describes the repository before the bot was installed. PR A is now reused for the bot demonstration; the original before-merge snapshot remains available for comparison.
