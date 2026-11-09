@@ -17,10 +17,10 @@ The table describes hypotheses to test, not completed results. All four issues a
 
 | Case | Issue | Pull request | Head -> base | PR title | PR description | Commit message |
 | --- | --- | --- | --- | --- | --- | --- |
-| A: title only | [1](../../issues/1) | [5](../../pull/5) | `title-only` -> `main` | `Fix GH-1: title-only test` | Empty | `Add sample A` |
-| B: commit only | [2](../../issues/2) | [6](../../pull/6) | `commit-only` -> `main` | `Commit-only test` | Empty | `Fix GH-2: commit-only test` |
-| C: description only | [3](../../issues/3) | [7](../../pull/7) | `body-only` -> `main` | `Body-only test` | `Fixes #3` | `Add sample C` |
-| D: non-default branch | [4](../../issues/4) | [8](../../pull/8) | `commit-via-release` -> `release-demo` | `Non-default branch test` | Empty | `Fix GH-4: release test` |
+| A: title only | [1](https://github.com/LamentXU123/issue-link-demo/issues/1) | [5](https://github.com/LamentXU123/issue-link-demo/pull/5) | `title-only` -> `main` | `Fix GH-1: title-only test` | Empty | `Add sample A` |
+| B: commit only | [2](https://github.com/LamentXU123/issue-link-demo/issues/2) | [6](https://github.com/LamentXU123/issue-link-demo/pull/6) | `commit-only` -> `main` | `Commit-only test` | Empty | `Fix GH-2: commit-only test` |
+| C: description only | [3](https://github.com/LamentXU123/issue-link-demo/issues/3) | [7](https://github.com/LamentXU123/issue-link-demo/pull/7) | `body-only` -> `main` | `Body-only test` | `Fixes #3` | `Add sample C` |
+| D: non-default branch | [4](https://github.com/LamentXU123/issue-link-demo/issues/4) | [8](https://github.com/LamentXU123/issue-link-demo/pull/8) | `commit-via-release` -> `release-demo` | `Non-default branch test` | Empty | `Fix GH-4: release test` |
 
 Issue and PR numbers share a counter; the issues are created before the PRs.
 
